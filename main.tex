@@ -65,14 +65,15 @@
 \usepackage{titlesec}           % Para estilo dos capítulos/subcapítulos
 \usepackage[bottom]{footmisc}   % arruma posição da nota de rodapé
 \usepackage{float}             % Para posicionar figuras
+\usepackage{fancyhdr}           % Para cabeçalhos e rodapés
 % ---
-		
+
 % ---
 % Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
 % ---
 \usepackage{lipsum}				% para geração de dummy text
 % ---
-		
+
 % ---
 % Pacotes de citações
 % ---
@@ -140,24 +141,28 @@
 \titulo{Modelo Canônico de Artigo científico com \abnTeX}
 \tituloestrangeiro{Canonical article template in \abnTeX: optional foreign title}
 
-\autor{
-Equipe \abnTeX\thanks{``Recomenda-se que os dados de vinculação e
-endereço constem em nota, com sistema de chamada próprio, diferente do sistema 
-adotado para citações no texto.'' \url{http://www.abntex.net.br/}}.
-Lauro César Araujo\thanks{``Constar currículo sucinto de cada autor, com 
-vinculação corporativa e endereço de contato.''} }
+\autor{ Equipe \abnTeX$^1$ \and Lauro César Araujo$^2$ }
 
 \local{Brasil}
-\data{2018, v-1.9.7}
 
-\makeatletter         
+\data{
+$^1${``Recomenda-se que os dados de vinculação e
+endereço constem em nota, com sistema de chamada próprio, diferente do sistema 
+adotado para citações no texto.'' \url{http://www.abntex.net.br/}}\\
+$^2${``Constar currículo sucinto de cada autor, com 
+vinculação corporativa e endereço de contato.''}
+}
+
+\makeatletter
 \renewcommand\maketitle{
 {\raggedright % Note the extra {
 \begin{center}
 {\large \bfseries \sffamily \MakeUppercase \imprimirtitulo }\\[2ex]
 {\large \bfseries \sffamily \MakeUppercase \imprimirtituloestrangeiro }\\[4ex]
-{\small  \@author}\\[2ex]
-{\small{Submetido em: 26 jul. de 2018. Aceito em: 20 ago. de 2018.}}\\[8ex]
+{\small  \imprimirautor}\\[2ex]
+{\small \imprimirdata}\\[2ex]
+{\small{Submetido em: 26 jul. de 2018. Aceito em: 20 ago. de 2018.}}\\[4ex]
+\hrule height 1.5pt \vspace{1.2pt}\hrule height 1pt
 \end{center}}} % Note the extra }
 \makeatother
 
@@ -226,7 +231,7 @@ vinculação corporativa e endereço de contato.''} }
 \selectlanguage{brazil}
 
 % Retira espaço extra obsoleto entre as frases.
-\frenchspacing 
+\frenchspacing
 
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
@@ -249,20 +254,20 @@ vinculação corporativa e endereço de contato.''} }
 
 Este documento e seu código-fonte são exemplos de referência de uso da classe
 \textsf{abntex2} e do pacote \textsf{abntex2cite}. O documento exemplifica a
-elaboração de publicação periódica científica impressa produzida conforme a ABNT
-NBR 6022:2018 \emph{Informação e documentação - Artigo em publicação periódica
-científica - Apresentação}.
+elaboração de publicação periódica científica impressa produzida conforme a
+ABNT NBR 6022:2018 \emph{Informação e documentação - Artigo em publicação
+   periódica científica - Apresentação}.
 
 A expressão ``Modelo canônico'' é utilizada para indicar que \abnTeX\ não é
-modelo específico de nenhuma universidade ou instituição, mas que implementa tão
-somente os requisitos das normas da ABNT. Uma lista completa das normas
+modelo específico de nenhuma universidade ou instituição, mas que implementa
+tão somente os requisitos das normas da ABNT. Uma lista completa das normas
 observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
 
 Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em
-\url{http://www.abntex.net.br/}. Também fique livre para conhecer,
-estudar, alterar e redistribuir o trabalho do \abnTeX, desde que os arquivos
-modificados tenham seus nomes alterados e que os créditos sejam dados aos
-autores originais, nos termos da ``The \LaTeX\ Project Public
+\url{http://www.abntex.net.br/}. Também fique livre para conhecer, estudar,
+alterar e redistribuir o trabalho do \abnTeX, desde que os arquivos modificados
+tenham seus nomes alterados e que os créditos sejam dados aos autores
+originais, nos termos da ``The \LaTeX\ Project Public
 License''\footnote{\url{http://www.latex-project.org/lppl.txt}}.
 
 Encorajamos que sejam realizadas customizações específicas deste documento.
@@ -342,8 +347,8 @@ ABNT NBR 10520:2002 seção 5.3, para 1.8 cm.
 
 \section{Cabeçalhos e rodapés customizados}
 
-Diferentes estilos de cabeçalhos e rodapés podem ser criados usando os
-recursos padrões do \textsf{memoir}.
+Diferentes estilos de cabeçalhos e rodapés podem ser criados usando os recursos
+padrões do \textsf{memoir}.
 
 Um estilo próprio de cabeçalhos e rodapés pode ser diferente para páginas pares
 e ímpares. Observe que a diferenciação entre páginas pares e ímpares só é
@@ -397,7 +402,7 @@ comandos de divisão do documento. Por exemplo:
      ...
    \end{document}  
 \end{verbatim}
-   
+
 Outras informações sobre cabeçalhos e rodapés estão disponíveis na seção 7.3 do
 manual do \textsf{memoir} \cite{memoir}.
 
@@ -430,7 +435,7 @@ referência completa das macros e ambientes disponíveis.
 \lipsum[1]
 
 \begin{citacao}
-\lipsum[2]
+   \lipsum[2]
 \end{citacao}
 
 \lipsum[3]
@@ -463,11 +468,11 @@ referência completa das macros e ambientes disponíveis.
 % ---
 \begin{apendicesenv}
 
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
-% ----------------------------------------------------------
-\lipsum[55-56]
+   % ----------------------------------------------------------
+   \chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+     ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+   % ----------------------------------------------------------
+   \lipsum[55-56]
 
 \end{apendicesenv}
 % ---
@@ -482,12 +487,12 @@ ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 %\anexos
 \begin{anexosenv}
 
-% ---
-\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-parturient montes nascetur ridiculus mus}
-% ---
+   % ---
+   \chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+     parturient montes nascetur ridiculus mus}
+   % ---
 
-\lipsum[31]
+   \lipsum[31]
 
 \end{anexosenv}
 
@@ -496,7 +501,7 @@ parturient montes nascetur ridiculus mus}
 % ----------------------------------------------------------
 
 \section*{Agradecimentos}
-Texto sucinto aprovado pelo periódico em que será publicado. Último 
+Texto sucinto aprovado pelo periódico em que será publicado. Último
 elemento pós-textual.
 
 \end{document}
