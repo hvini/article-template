@@ -141,7 +141,7 @@
 \titulo{Modelo Canônico de Artigo científico com \abnTeX}
 \tituloestrangeiro{Canonical article template in \abnTeX: optional foreign title}
 
-\autor{ Equipe \abnTeX$^1$ \and Lauro César Araujo$^2$ }
+\autor{ \thanks{Caso tenha tido orientação de algum professor, ele deverá ser colocado por último na ordem de autoria.}Equipe \abnTeX$^1$ \and Lauro César Araujo$^2$ }
 
 \local{Brasil}
 
@@ -154,16 +154,20 @@ vinculação corporativa e endereço de contato.''}
 }
 
 \makeatletter
-\renewcommand\maketitle{
-{\raggedright % Note the extra {
-\begin{center}
-{\large \bfseries \sffamily \MakeUppercase \imprimirtitulo }\\[2ex]
-{\large \bfseries \sffamily \MakeUppercase \imprimirtituloestrangeiro }\\[4ex]
-{\small  \imprimirautor}\\[2ex]
-{\small \imprimirdata}\\[2ex]
-{\small{Submetido em: 26 jul. de 2018. Aceito em: 20 ago. de 2018.}}\\[4ex]
-\hrule height 1.5pt \vspace{1.2pt}\hrule height 1pt
-\end{center}}} % Note the extra }
+\def\@maketitle{
+   \begin{center}
+      \let \footnote \thanks
+      {\large \bfseries \sffamily \MakeUppercase \imprimirtitulo }\\[2ex]
+      {\large \bfseries \sffamily \MakeUppercase \imprimirtituloestrangeiro }\\[4ex]
+      {\small
+      \lineskip .5em
+      \begin{tabular}[t]{c}
+         \@author
+      \end{tabular}\par}
+      {\small \imprimirdata}\\[2ex]
+      {\small{Submetido em: 26 jul. de 2018. Aceito em: 20 ago. de 2018.}}\\[4ex]
+      \hrule height 1.5pt \vspace{1.2pt}\hrule height 1pt
+   \end{center}}
 \makeatother
 
 % ---
