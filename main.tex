@@ -34,7 +34,7 @@
 	oneside,			% para impressão apenas no recto. Oposto a twoside
 	a4paper,			% tamanho do papel. 
 	% -- opções da classe abntex2 --
-	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
 	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
 	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
 	%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
@@ -49,22 +49,20 @@
 % PACOTES
 % ---
 
-% ---
-% Pacotes fundamentais 
-% ---
-\usepackage{helvet}			% Usa a fonte Latin Helvet
+% % ---
+% % Pacotes fundamentais 
+% % ---
+\usepackage{helvet}			    % Usa a fonte Helvet			
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{nomencl} 			% Lista de simbolos
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{microtype} 			% Para melhorias de justificação
 \usepackage{pdfpages}           % Para incluir pdf no documento
 \usepackage{ragged2e}           % Para alinhamento de texto
 \usepackage{titlesec}           % Para estilo dos capítulos/subcapítulos
 \usepackage[bottom]{footmisc}   % arruma posição da nota de rodapé
-\usepackage{float}             % Para posicionar figuras
 \usepackage{fancyhdr}           % Para cabeçalhos e rodapés
 % ---
 
@@ -92,15 +90,14 @@
 \renewcommand*{\chapnumfont}{\normalfont\large\bfseries\sffamily}
 \renewcommand*{\chaptitlefont}{\normalfont\large\bfseries\sffamily}
 
-% Define o tamanho da fonte das seções e sub-seções para 12pt,
-% sendo as seções em negrito.
-\setsecheadstyle{\normalsize}
-\setsubsecheadstyle{\normalsize}
-% ---
-
 \makeatletter
 \titleformat{\section}
-  {\MakeUppercase}{\thesection}{1em}{}
+  {\bfseries\MakeUppercase}{\thesection}{1em}{}
+\makeatother
+
+\makeatletter
+\titleformat{\subsection}
+  {\bfseries}{\thesubsection}{1em}{}
 \makeatother
 
 \graphicspath{{./images/}}
@@ -175,10 +172,12 @@ vinculação corporativa e endereço de contato.''}
 % --- Numeração de páginas no topo direito ---
 
 \fancypagestyle{plain}{
-    \fancyhf{} % clear all header and footer fields
-    \fancyhead[RO,RE]{\thepage} %RO=right odd, RE=right even
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
+   \fancyhf{} % clear all header and footer fields
+   \fancyhead[R]{\thepage}
+   \renewcommand{\headrulewidth}{0pt}
+   \renewcommand{\footrulewidth}{0pt}
+   \setlength\headheight{14.5pt}
+   \fancyheadoffset[R]{1cm}
 }
 
 % ---
@@ -192,18 +191,18 @@ vinculação corporativa e endereço de contato.''}
 % informações do PDF
 \makeatletter
 \hypersetup{
-     	%pagebackref=true,
-		pdftitle={\@title}, 
-		pdfauthor={\@author},
-    	pdfsubject={Modelo de artigo científico com abnTeX2},
-	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      		% color of file links
-		urlcolor=blue,
-		bookmarksdepth=4
+%pagebackref=true,
+%pdftitle={\@title}, 
+%pdfauthor={\@author},
+pdfsubject={Modelo de artigo científico com abnTeX2},
+pdfcreator={LaTeX with abnTeX2},
+pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico},
+colorlinks=true,       		% false: boxed links; true: colored links
+linkcolor=blue,          	% color of internal links
+citecolor=blue,        		% color of links to bibliography
+filecolor=magenta,      		% color of file links
+urlcolor=blue,
+bookmarksdepth=4
 }
 \makeatother
 % --- 
@@ -265,7 +264,7 @@ vinculação corporativa e endereço de contato.''}
 % ----------------------------------------------------------
 % Introdução
 % ----------------------------------------------------------
-\section{Introdução}
+\section*{Introdução}
 
 Este documento e seu código-fonte são exemplos de referência de uso da classe
 \textsf{abntex2} e do pacote \textsf{abntex2cite}. O documento exemplifica a
@@ -301,9 +300,9 @@ exemplos e informações adicionais de uso de \abnTeX\ e de \LaTeX.
 % ----------------------------------------------------------
 % Seção de explicações
 % ----------------------------------------------------------
-\section{Exemplos de comandos}
+\section*{Exemplos de comandos}
 
-\subsection{Margens}
+\subsection*{Margens}
 
 A norma ABNT NBR 6022:2018 não estabelece uma margem específica a ser utilizada
 no artigo científico. Dessa maneira, caso deseje alterar as margens, utilize os
@@ -315,7 +314,7 @@ comandos abaixo:
    \checkandfixthelayout
 \end{verbatim}
 
-\subsection{Duas colunas}
+\subsection*{Duas colunas}
 
 É comum que artigos científicos sejam escritos em duas colunas. Para isso,
 adicione a opção \texttt{twocolumn} à classe do documento, como no exemplo:
@@ -347,7 +346,7 @@ a opção \texttt{twocolumn} devem ser escritos no ambiente
    ]                        % FIM DE ARTIGO EM DUAS COLUNAS
 \end{verbatim}
 
-\subsection{Recuo do ambiente \texttt{citacao}}
+\subsection*{Recuo do ambiente \texttt{citacao}}
 
 Na produção de artigos (opção \texttt{article}), pode ser útil alterar o recuo
 do ambiente \texttt{citacao}. Nesse caso, utilize o comando:
@@ -360,7 +359,7 @@ Quando um documento é produzido com a opção \texttt{twocolumn}, a classe
 \textsf{abntex2} automaticamente altera o recuo padrão de 4 cm, definido pela
 ABNT NBR 10520:2002 seção 5.3, para 1.8 cm.
 
-\section{Cabeçalhos e rodapés customizados}
+\section*{Cabeçalhos e rodapés customizados}
 
 Diferentes estilos de cabeçalhos e rodapés podem ser criados usando os recursos
 padrões do \textsf{memoir}.
@@ -421,7 +420,7 @@ comandos de divisão do documento. Por exemplo:
 Outras informações sobre cabeçalhos e rodapés estão disponíveis na seção 7.3 do
 manual do \textsf{memoir} \cite{memoir}.
 
-\section{Mais exemplos no Modelo Canônico de Trabalhos Acadêmicos}
+\section*{Mais exemplos no Modelo Canônico de Trabalhos Acadêmicos}
 
 Este modelo de artigo é limitado em número de exemplos de comandos, pois são
 apresentados exclusivamente comandos diretamente relacionados com a produção de
@@ -431,7 +430,7 @@ Para exemplos adicionais de \abnTeX\ e \LaTeX, como inclusão de figuras,
 fórmulas matemáticas, citações, e outros, consulte o documento
 \citeonline{abntex2modelo}.
 
-\section{Consulte o manual da classe \textsf{abntex2}}
+\section*{Consulte o manual da classe \textsf{abntex2}}
 
 Consulte o manual da classe \textsf{abntex2} \cite{abntex2classe} para uma
 referência completa das macros e ambientes disponíveis.
@@ -445,7 +444,7 @@ referência completa das macros e ambientes disponíveis.
 % ---
 % Conclusão
 % ---
-\section{Considerações finais}
+\section*{Considerações finais}
 
 \lipsum[1]
 
